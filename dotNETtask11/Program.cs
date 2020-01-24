@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNETtask6._1
+namespace dotNETtask11
 {
     class Program
     {
@@ -13,6 +13,8 @@ namespace dotNETtask6._1
         {
             string userCommand = "";
             bool userDone = false;
+            People people = new People();
+            people.LoadFromFile("TemplateImportEmpl.csv");
             Console.WriteLine("***** Добро пожаловать! *****");
             try
             {
@@ -33,7 +35,7 @@ namespace dotNETtask6._1
                                 Console.WriteLine("Введите слово, которое хотите найти:");
                                 break;
                             case "В":
-                                Console.WriteLine("Now menu is in English!");
+                                people.PrintAll();
                                 break;
                             case "К":
                                 ShowInstruction();
