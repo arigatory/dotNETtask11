@@ -14,25 +14,38 @@ namespace dotNETtask11
             string userCommand = "";
             bool userDone = false;
             People people = new People();
-            people.LoadFromFile("TemplateImportEmpl.csv");
+            try
+            {
+                people.Load();
+                Console.WriteLine("Данные загружены из xml файла");
+            }
+            catch (System.IO.FileNotFoundException ex)
+            {
+                Console.WriteLine("Программа запущена первый раз, загружаются тестовые данные из файла csv");
+                people.LoadFromFile("TemplateImportEmpl.csv");
+                Console.WriteLine("Данные загружены успешно!");
+                people.Save();
+            }
+            
             Console.WriteLine("***** Добро пожаловать! *****");
             try
             {
                 ShowInstruction();
                 do
                 {
+                    Console.Write("\n>");
                     userCommand = Console.ReadLine().Trim();
                     Console.WriteLine();
                     switch (userCommand.ToUpper())
                         {
                             case "Д":
-                                Console.WriteLine("Добавляем новое слово. Пожалуйста, введите новое слово:");
+                                AddNewEmployee();
                                 break;
                             case "У":
-                                Console.WriteLine("Пожалуйста, введите слово, которое хотите удалить:");
+                                DeleteEmployee();
                                 break;
                             case "П":
-                                Console.WriteLine("Введите слово, которое хотите найти:");
+                                SearchEmployee(people);
                                 break;
                             case "В":
                                 people.PrintAll();
@@ -54,8 +67,38 @@ namespace dotNETtask11
             {
                 Console.WriteLine(e.Message);
             }
-
             Console.ReadLine();
+        }
+
+        private static void SearchEmployee()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void SearchEmployee(People p)
+        {
+            Console.WriteLine("Введите данные для поиска (фамилию, имя, телефон и тп)");
+            string input = Console.ReadLine().Trim();
+            List<Person> searchResult = p.Search(input.ToUpper());
+            foreach (Person person in searchResult)
+            {
+                Console.WriteLine(person);
+            }
+            if (searchResult.Count() == 0)
+            {
+                Console.WriteLine("Ничего не найдено");
+            }
+            
+        }
+
+        private static void DeleteEmployee()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void AddNewEmployee()
+        {
+            throw new NotImplementedException();
         }
 
         //add translation

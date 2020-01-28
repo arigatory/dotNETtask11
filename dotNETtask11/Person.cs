@@ -16,7 +16,7 @@ namespace dotNETtask11
         public string Address { get; set; }
         public override string ToString()
         {
-            return $"Name: {Name}\tPatronymic: {Patronymic}\tLast Name: {LastName}\tPhone: {Phone}\tAddress: {Address}";
+            return $"ФИО: {Name} {Patronymic} {LastName}       [Телефон: {(Phone == String.Empty ? "нет" : Phone)}]       [Email: {Address}]";
         }
     }
 }
