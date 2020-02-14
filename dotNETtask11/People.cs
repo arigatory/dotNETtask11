@@ -40,6 +40,10 @@ namespace dotNETtask11
             }
         }
 
+        public void Add(Person p)
+        {
+            persons.Add(p);
+        }
         public List<Person> Search(string str)
         {
             List<Person> result = new List<Person>();

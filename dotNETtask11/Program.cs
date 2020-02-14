@@ -39,7 +39,7 @@ namespace dotNETtask11
                     switch (userCommand.ToUpper())
                         {
                             case "Д":
-                                AddNewEmployee();
+                                AddNewEmployee(people);
                                 break;
                             case "У":
                                 DeleteEmployee();
@@ -93,12 +93,33 @@ namespace dotNETtask11
 
         private static void DeleteEmployee()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Пока не реализовано (по заданию не требовалось)");
         }
 
-        private static void AddNewEmployee()
+        private static void AddNewEmployee(People p)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("***** Добавляем нового сотрудника *****");
+            Console.WriteLine("Введите имя");
+            string name = Console.ReadLine();
+            Console.WriteLine("Введите отчество");
+            string patronymic = Console.ReadLine();
+            Console.WriteLine("Введите фамилию");
+            string lastName = Console.ReadLine();
+            Console.WriteLine("Введите email");
+            string email = Console.ReadLine();
+            Console.WriteLine("Введите телефон");
+            string phone = Console.ReadLine();
+            Person tempPerson = new Person
+            {
+                Name = name,
+                Patronymic = patronymic,
+                LastName = lastName,
+                Address = email,
+                Phone = phone,
+            };
+            p.Add(tempPerson);
+            p.Save();
+            Console.WriteLine("Добавлено!");
         }
 
         //add translation
